@@ -76,8 +76,10 @@ message - replace its wording wholesale with `$DSH_HOME/mega-index-prompt.md`.
   Local reads only: nothing is uploaded, no file is modified
 - `library_project` - dependency map of a source tree: `op=map` reports files, lines, edges, tests and the
   most depended-on files; `op=affects file=<path>` names every file and test that transitively imports the
-  given one. Language rules are data (js/ts, c/cpp, hmoca/hmyr, py, rs, go), and string-path loaders such as
-  `loadUnit` count as dependencies too.
+  given one. Language rules are data (js/ts, c/cpp, hmoca/hmyr, py, rs, go). A dependency is not only an
+  `import` statement: a string path handed to a loader counts too, so hmoca's own import statement and a
+  call like `loadUnit("./x.hmoca")` both become edges, and a source pulled in by either spelling stops
+  disappearing from the map.
 
 ### First run: mine the history before claiming to be installed
 
@@ -158,6 +160,18 @@ it alone is also a decision, and the list is what makes the difference visible.
 
 
 
+
+## What changed in 0.4.3
+
+- `library_project`'s hmoca/hmyr rule learns the second way this language loads a source: the import
+  statement is a dependency edge exactly like `loadUnit("./x.hmoca")` is. Both spellings show up in
+  `op=map` now.
+- The js/ts rule learns two more shapes it used to miss.
+- `op=affects` no longer fails its own output schema.
+- The ASCII invariant is green again after an edit slipped a non-ASCII character into the text.
+
+0.4.2 was the release that documented the map itself: `library_project` plus the "point the map at the
+test that matters" habit.
 
 ## Install
 

@@ -1,7 +1,7 @@
 {
   "name": "mega-index-map",
-  "version": "0.4.2",
-  "description": "Cross-workspace interop Library for DeepSeek Harness: record, index and search files, tools, environments, knowledge and work records across workspaces, with a self-extending file-format library.",
+  "version": "0.4.3",
+  "description": "Cross-workspace Library for DeepSeek Harness: record, query and verify files, tools, environments, knowledge and work records across workspaces - with a self-extending file-format library, session-log mining, and a source-tree dependency map.",
   "keywords": [
     "dsh",
     "dsh-plugin",
@@ -9,7 +9,12 @@
     "workspace",
     "library",
     "interop",
-    "knowledge-base"
+    "knowledge-base",
+    "file-format",
+    "file-signature",
+    "session-logs",
+    "codebase-index",
+    "agent-memory"
   ],
   "type": "module",
   "main": "lib/index.js",
