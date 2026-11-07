@@ -4,6 +4,8 @@
   <img src="docs/social-preview.webp" alt="一张 2:1 海报，融合构成主义、波普与达达：Mim 以三种尺度站在放射红楝、裂开的白圆、网点场、平涂色块与撕纸之间" width="640">
 </p>
 
+*Mim（麦姆），本项目的吉祥物：同一个角色三种尺度，收在一张海报里。*
+
 > 英文原文：[README.md](README.md)
 
 面向 DeepSeek Harness 的跨工作区资料库（Library）。Agent 把遇到的对象——文件、工具、环境、知识、

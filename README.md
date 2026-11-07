@@ -4,6 +4,8 @@
   <img src="docs/social-preview.webp" alt="A 2:1 poster fusing Constructivism, Pop Art and Dada: Mim at three scales among radial red wedges, a cracked white disc, halftone dot fields, flat colour blocks and torn paper" width="640">
 </p>
 
+*Mim, this project's mascot: one character at three scales, on a single poster.*
+
 > Chinese documentation: [README.zh-CN.md](README.zh-CN.md)
 
 A cross-workspace Library for DeepSeek Harness. Agents record the objects they meet - files, tools,
