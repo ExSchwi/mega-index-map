@@ -4,14 +4,6 @@
   <img src="docs/social-preview.webp" alt="一张 2:1 海报，融合构成主义、波普与达达：Mim 以三种尺度站在放射红楝、裂开的白圆、网点场、平涂色块与撕纸之间" width="640">
 </p>
 
-**Mim（麦姆）** 是这个项目的吉祥物。角色形象由本仓库作者生成、归作者所有，**不包含在覆盖代码的 MIT 授权内**；
-上面那张海报由本机用 Qwen-Image（阿里云百炼）从项目自己的角色立绘生成，同一套立绘另见 `docs/mim.png` 与 `docs/mim-chibi.webp`；
-全身立绘在 `docs/mim.webp`，方形图标裁切在 `docs/mim-icon.webp`；上面这张 Q 版是对外宣传优先用的那一版。
-
-已签名的发布物带一份 PKCS#7 签名、一个哈希文件与公钥证书；怎么验证、以及签名证明了什么、没证明什么，都写在
-[docs/verification.md](docs/verification.md)。
-维护者那一侧写在 [docs/releasing.md](docs/releasing.md)：发布怎么切、推送之后 CI 会做什么。
-
 > 英文原文：[README.md](README.md)
 
 面向 DeepSeek Harness 的跨工作区资料库（Library）。Agent 把遇到的对象——文件、工具、环境、知识、
@@ -22,6 +14,17 @@
 打开文件猜类型之前用 `library_sniff`，手动翻目录看有什么之前用 `library_index op=audit`。如果宿主
 仍然习惯性去扫盘，可开 `injectPrompt: true`（插件配置），它会把一段简短提示前置到每个会话的首条用户
 消息；想换措辞就把文本写到 `$DSH_HOME/mega-index-prompt.md`，整体替换。
+
+## 安装
+
+```powershell
+# 首次安装
+dsh plugin --profile web add github:Nesarf/mega-index-map
+# 升级已安装的副本——用 `add` 只会报 "resolution step is skipped"、lockfile 仍钉在旧 commit，
+# 升级必须用 `update` 加包名
+dsh plugin --profile web update mega-index-map
+```
+
 
 ## 工具
 
@@ -61,6 +64,7 @@
   py、rs、go）。依赖不只是 import 语句：交给加载器的字符串路径也算，所以 `引入 "./x.hmoca"` 与
   `loadUnit("./x.hmoca")` 都会成为边——两种写法都不会再从图上消失。
 
+
 ### 首次运行：先把历史淘一遍，再自称装好
 
 插件第一次启动时会读遍能找到的所有会话，从中**只**淘出资料库真正要索引的东西——本机真实存在的工具、
@@ -75,6 +79,7 @@
 进度）、`off`（只有显式 `op=bootstrap` 才跑）。`bootstrapBudgetMs`（默认 300000）让一趟干净停下，超长历史
 分几次启动跑完，并且**从断点续跑**。每一步都会追加到 `$DSH_HOME/library/bootstrap-progress.jsonl`，当前状态
 在 `bootstrap-state.json`——每会话一行、写明正在读哪个文件，所以进度是当场可见，而不是只在结尾给个总数。
+
 
 ### 敏感记录能做什么、不能做什么
 
@@ -120,6 +125,7 @@
 
 
 
+
 ## 0.4.3 改了什么
 
 - `library_project` 的 hmoca/hmyr 规则学会这门语言装载源码的第二种写法：`引入 "./x.hmoca"` 与
@@ -130,15 +136,6 @@
 
 0.4.2 是把地图本身写进文档的那一版：`library_project`，以及「把地图指向真正相关的那一个测试」这条习惯。
 
-## 安装
-
-```powershell
-# 首次安装
-dsh plugin --profile web add github:Nesarf/mega-index-map
-# 升级已安装的副本——用 `add` 只会报 "resolution step is skipped"、lockfile 仍钉在旧 commit，
-# 升级必须用 `update` 加包名
-dsh plugin --profile web update mega-index-map
-```
 
 ## 说明
 
@@ -161,3 +158,16 @@ dsh plugin --profile web update mega-index-map
   跑五段自检——测通、遍历、校对、遍历、测通——并按轴分别报告。
 - 本文件是仓库里唯一的本地化文档（也是 ASCII 不变量唯一的散文类例外），其余文本与代码仍为纯 ASCII。
 - MIT 许可证，见 [LICENSE](LICENSE)。
+
+
+## Mim 与不属于 MIT 的部分
+
+**Mim（麦姆）** 是这个项目的吉祥物。角色形象由本仓库作者生成、归作者所有，**不包含在覆盖代码的 MIT 授权内**；
+上面那张海报由本机用 Qwen-Image（阿里云百炼）从项目自己的角色立绘生成，同一套立绘另见 `docs/mim.png` 与 `docs/mim-chibi.webp`；
+全身立绘在 `docs/mim.webp`，方形图标裁切在 `docs/mim-icon.webp`；上面这张 Q 版是对外宣传优先用的那一版。
+
+## 已签名的发布
+
+已签名的发布物带一份 PKCS#7 签名、一个哈希文件与公钥证书；怎么验证、以及签名证明了什么、没证明什么，都写在
+[docs/verification.md](docs/verification.md)。
+维护者那一侧写在 [docs/releasing.md](docs/releasing.md)：发布怎么切、推送之后 CI 会做什么。
